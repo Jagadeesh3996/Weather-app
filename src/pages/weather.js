@@ -26,10 +26,11 @@ const Weather=()=>{
                     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
                 }
             };
-            return axios.request(options);
+            return axios(options);
         }).then(data=>{
+            const {location,current}=data.data;
             const info =
-                <p>City Name - {data.data.location.name}<br/>State - {data.data.location.region}<br/>Country - {data.data.location.country}<br/>longitude - {data.data.location.lon} deg<br/>latitude - {data.data.location.lat} deg<br/><br/>Date and Time - {data.data.location.localtime}<br/>Temperature - {data.data.current.temp_c} C , {data.data.current.temp_f} F<br/>Wind Speed - {data.data.current.wind_kph} kph<br/>Humidity - {data.data.current.humidity}<br/>Condition - {data.data.current.condition.text}</p>;
+                <p>City Name - {location.name}<br/>State - {location.region}<br/>Country - {location.country}<br/>longitude - {location.lon} deg<br/>latitude - {location.lat} deg<br/><br/>Date and Time - {location.localtime}<br/>Temperature - {current.temp_c}&deg;C , {current.temp_f}&deg;F<br/>Wind Speed - {current.wind_kph} km/h<br/>Humidity - {current.humidity} %<br/>Condition - {current.condition.text}</p>;
             setDetails([info]);
             SetCname("");
         }).catch(error=>{
@@ -42,7 +43,7 @@ const Weather=()=>{
             <h1>Check Weather Report for a City</h1>
             <form onSubmit={weather} className="form">
                 <input type="text" name="cityName" placeholder="Enter the City Name" value={cname} onChange={changeName} required />
-                <input type="submit" value="Check" className="btn" />
+                <button type="submit" className="btn">Check</button>
             </form>
             <div className="dis">{details}</div>
         </div>

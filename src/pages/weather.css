@@ -16,7 +16,7 @@ h1{
                 -5px 0px 5px rgb(255, 255, 255),
                 0px -5px 5px rgb(255, 255, 255);
 }
-.form input{
+.form input, .btn{
     padding: 10px;
     margin: 20px 5px;
     font-size: 20px;
@@ -29,4 +29,14 @@ h1{
     color: rgb(255, 255, 255);
     padding: 20px;
     font-weight: 500;
+}
+.btn{
+    background-color: rgb(0, 255, 0);
+    cursor: pointer;
+    border: 2px solid rgb(0, 0, 0);
+}
+.btn:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(3, 80, 3);
+    border: 2px solid rgb(255, 255, 255);
 }
